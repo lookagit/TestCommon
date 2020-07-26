@@ -102,10 +102,10 @@ export function* login(api: IApi, auth0Api: IAuthApi, { email, password }: Login
         }
       }
     } else {
-      yield put(LoginActions.loginFailure({ error: 'Bad credentials' } || 'Network Error'));
+      yield put(LoginActions.loginFailure({ error: 'Bad credentials' } || { error: 'Network Error' }));
     }
   } else {
-    yield put(LoginActions.loginFailure({ error: 'User not found' } || 'Network Error'));
+    yield put(LoginActions.loginFailure({ error: 'User not found' } || { error: 'Network Error' }));
   }
 }
 

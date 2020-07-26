@@ -1,7 +1,17 @@
 import { Action } from 'redux';
 
+export interface IUserInfoData {
+  email: string,
+  email_verified: boolean,
+  name: string,
+  nickname: string,
+  picture: string,
+  sub: string,
+  updated_at: string,
+
+}
 export interface IUserInfoState {
-  userInfoData: object | null,
+  userInfoData: IUserInfoData | null,
   error: object | null,
   fetching: boolean,
   loading: boolean,
