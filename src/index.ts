@@ -1,5 +1,6 @@
-import * as Api from './api';
+import { api, authApi } from './api';
 
 export {
-  Api
+  api,
+  authApi
 }
