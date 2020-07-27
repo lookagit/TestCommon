@@ -1,6 +1,2 @@
-import api from './api'
-import authApi from './authApi';
-module.exports = {
-  api,
-  authApi
-}
+export { default as api } from './api';
+export { default as authApi } from './authApi';
