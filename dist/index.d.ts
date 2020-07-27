@@ -1,3 +1,4 @@
 import { api, authApi } from './api';
 import utils from './utils';
-export { api, authApi, utils };
+import LoginActions, { LoginTypes } from './redux/reducers/auth';
+export { api, authApi, utils, LoginActions, LoginTypes };
