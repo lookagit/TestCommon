@@ -1,2 +1,3 @@
 import { api, authApi } from './api';
-export { api, authApi };
+import utils from './utils';
+export { api, authApi, utils };

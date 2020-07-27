@@ -1,5 +1,5 @@
 
-export function calculateNetworkHealth(health: number, status: string): { color: string, health: number | null} {
+export default function calculateNetworkHealth(health: number, status: string): { color: string, health: number | null} {
     
   const lightGreen = "#6EE294";
   const orange = "#FF993A";

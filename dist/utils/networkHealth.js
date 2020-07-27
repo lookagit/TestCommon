@@ -1,6 +1,5 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.calculateNetworkHealth = void 0;
 function calculateNetworkHealth(health, status) {
     var lightGreen = "#6EE294";
     var orange = "#FF993A";
@@ -50,5 +49,5 @@ function calculateNetworkHealth(health, status) {
             };
     }
 }
-exports.calculateNetworkHealth = calculateNetworkHealth;
+exports.default = calculateNetworkHealth;
 //# sourceMappingURL=networkHealth.js.map
