@@ -4,7 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 var _a;
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.reducer = exports.failure = exports.success = exports.request = exports.INITIAL_STATE = exports.UserInfoTypes = void 0;
+exports.reducer = exports.failure = exports.success = exports.request = exports.INITIAL_STATE = exports.UserSettingsTypes = void 0;
 var reduxsauce_1 = require("reduxsauce");
 var seamless_immutable_1 = __importDefault(require("seamless-immutable"));
 /* ------------- Types and Action Creators ------------- */
@@ -13,7 +13,7 @@ var _b = reduxsauce_1.createActions({
     userSettingsSuccess: ['userSettings'],
     userSettingsFailure: ['error'],
 }), Types = _b.Types, Creators = _b.Creators;
-exports.UserInfoTypes = Types;
+exports.UserSettingsTypes = Types;
 exports.default = Creators;
 exports.INITIAL_STATE = seamless_immutable_1.default({
     userSettingsData: null,

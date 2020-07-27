@@ -14,7 +14,7 @@ const { Types, Creators } = createActions<IUserSettingsActionTypes, {
       userSettingsFailure: ['error'],
     });
 
-export const UserInfoTypes = Types;
+export const UserSettingsTypes = Types;
 export default Creators;
 
 export const INITIAL_STATE: ImmutableObject<IUserSettingsState> = Immutable({

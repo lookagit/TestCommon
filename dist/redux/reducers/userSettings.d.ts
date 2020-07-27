@@ -5,7 +5,7 @@ declare const Creators: {
     userSettingsSuccess: (data: object) => SetUserSettingsParamType;
     userSettingsFailure: (error: object) => SetUserSettingsParamType;
 };
-export declare const UserInfoTypes: IUserSettingsActionTypes;
+export declare const UserSettingsTypes: IUserSettingsActionTypes;
 export default Creators;
 export declare const INITIAL_STATE: ImmutableObject<IUserSettingsState>;
 export declare const request: (state: ImmutableObject<IUserSettingsState>) => Immutable.ImmutableObject<IUserSettingsState>;
