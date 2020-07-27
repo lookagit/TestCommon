@@ -1,2 +1,2 @@
-import * as Api from './api';
-export { Api };
+import { api, authApi } from './api';
+export { api, authApi };
