@@ -38,7 +38,7 @@ const { Types, Creators } = createActions<IAuthActionTypes, {
       initStorageFailure: ['error']
     });
 
-export const LoginTypes = Types;
+export const AuthTypes = Types;
 export default Creators;
 
 /* ------------- Initial State ------------- */

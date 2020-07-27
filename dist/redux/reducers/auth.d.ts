@@ -17,7 +17,7 @@ declare const Creators: {
     initStorage: (id_token: string, refresh_token: string, access_token: string, expires_in: number) => SetAuthParamType;
     initStorageFailure: (error: object) => SetAuthParamType;
 };
-export declare const LoginTypes: IAuthActionTypes;
+export declare const AuthTypes: IAuthActionTypes;
 export default Creators;
 export declare const INITIAL_STATE: ImmutableObject<IAuthState>;
 export declare const request: (state: ImmutableObject<IAuthState>) => Immutable.ImmutableObject<IAuthState>;

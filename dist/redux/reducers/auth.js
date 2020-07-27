@@ -4,7 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 var _a;
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.reducer = exports.logoutSuccess = exports.logoutRequest = exports.initStorageFailure = exports.initStorageRequest = exports.initStorage = exports.refreshFailure = exports.refreshSuccess = exports.refresh = exports.loadSuccess = exports.load = exports.loginFailureField = exports.failure = exports.success = exports.request = exports.INITIAL_STATE = exports.LoginTypes = void 0;
+exports.reducer = exports.logoutSuccess = exports.logoutRequest = exports.initStorageFailure = exports.initStorageRequest = exports.initStorage = exports.refreshFailure = exports.refreshSuccess = exports.refresh = exports.loadSuccess = exports.load = exports.loginFailureField = exports.failure = exports.success = exports.request = exports.INITIAL_STATE = exports.AuthTypes = void 0;
 var reduxsauce_1 = require("reduxsauce");
 var seamless_immutable_1 = __importDefault(require("seamless-immutable"));
 var moment_timezone_1 = __importDefault(require("moment-timezone"));
@@ -25,7 +25,7 @@ var _b = reduxsauce_1.createActions({
     initStorage: ['id_token', 'refresh_token', 'access_token', 'expires_in'],
     initStorageFailure: ['error']
 }), Types = _b.Types, Creators = _b.Creators;
-exports.LoginTypes = Types;
+exports.AuthTypes = Types;
 exports.default = Creators;
 /* ------------- Initial State ------------- */
 exports.INITIAL_STATE = seamless_immutable_1.default({

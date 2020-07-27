@@ -45,11 +45,11 @@ function root() {
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0: return [4 /*yield*/, effects_1.all([
-                    effects_1.takeEvery(auth_1.LoginTypes.LOGIN_LOAD, auth_2.loginLoad, api),
-                    effects_1.takeLatest(auth_1.LoginTypes.LOGIN_REQUEST, auth_2.login, api, auth0Api),
-                    effects_1.takeLatest(auth_1.LoginTypes.LOGOUT_REQUEST, auth_2.logout, api),
-                    effects_1.takeLatest(auth_1.LoginTypes.REFRESH_REQUEST, auth_2.refresh, api),
-                    effects_1.takeLatest(auth_1.LoginTypes.INIT_STORAGE_REQUEST, auth_2.initialAuthFromStoage),
+                    effects_1.takeEvery(auth_1.AuthTypes.LOGIN_LOAD, auth_2.loginLoad, api),
+                    effects_1.takeLatest(auth_1.AuthTypes.LOGIN_REQUEST, auth_2.login, api, auth0Api),
+                    effects_1.takeLatest(auth_1.AuthTypes.LOGOUT_REQUEST, auth_2.logout, api),
+                    effects_1.takeLatest(auth_1.AuthTypes.REFRESH_REQUEST, auth_2.refresh, api),
+                    effects_1.takeLatest(auth_1.AuthTypes.INIT_STORAGE_REQUEST, auth_2.initialAuthFromStoage),
                     effects_1.takeLatest(networks_1.NetworkTypes.NETWORKS_REQUEST, networks_2.getNetworks, api),
                     effects_1.takeLatest(organizations_1.OrganizationsTypes.SET_ORGANIZATIONS_REQUEST, organizations_2.selectOrganization, api),
                 ])];
