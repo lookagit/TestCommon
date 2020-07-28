@@ -32,13 +32,13 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.loginLoad = exports.logout = exports.refresh = exports.initialAuthFromStoage = exports.login = exports.selectOrganizations = void 0;
 var effects_1 = require("redux-saga/effects");
-var connected_react_router_1 = require("connected-react-router");
 var moment_timezone_1 = __importDefault(require("moment-timezone"));
 var call_api_saga_1 = require("./call-api-saga");
 var organizations_1 = __importDefault(require("../reducers/organizations"));
 var userInfo_1 = __importDefault(require("../reducers/userInfo"));
 var userSettings_1 = __importDefault(require("../reducers/userSettings"));
 var auth_1 = __importDefault(require("../reducers/auth"));
+var navigation_1 = __importDefault(require("../../navigation"));
 var AUDIENCE = 'https://smart.server/';
 var SCOPE = 'openid profile offline_access email app:normal';
 var selectAuth = function (state) { return state.auth; };
@@ -133,7 +133,7 @@ function login(api, auth0Api, _a) {
                 _f.label = 17;
             case 17:
                 if (!(getOrganizationsSuccess && organizationsData && organizationsData.data && organizationsData.data.length > 1)) return [3 /*break*/, 19];
-                return [4 /*yield*/, effects_1.put(connected_react_router_1.push('/home', { showModal: true }))];
+                return [4 /*yield*/, effects_1.call(function () { return navigation_1.default.push('/home', { showModal: true }); })];
             case 18:
                 _f.sent();
                 _f.label = 19;
@@ -142,7 +142,7 @@ function login(api, auth0Api, _a) {
                 return [4 /*yield*/, effects_1.put(organizations_1.default.setOrganizationsSuccess(firstOrgId.org_id))];
             case 20:
                 _f.sent();
-                return [4 /*yield*/, effects_1.put(connected_react_router_1.push('/home'))];
+                return [4 /*yield*/, effects_1.call(function () { return navigation_1.default.push('/home'); })];
             case 21:
                 _f.sent();
                 _f.label = 22;
@@ -239,13 +239,13 @@ function loginLoad(api) {
                 api.setTimezoneHeader(auth.tzIana);
                 api.setAuthTokenForServer(auth.accessToken);
                 if (!(router && router.location && router.location.pathname === '/')) return [3 /*break*/, 8];
-                return [4 /*yield*/, effects_1.put(connected_react_router_1.replace('/home'))];
+                return [4 /*yield*/, effects_1.call(function () { return navigation_1.default.replace('/home'); })];
             case 7:
                 _a.sent();
                 _a.label = 8;
             case 8:
                 if (!(auth && !auth.accessToken)) return [3 /*break*/, 10];
-                return [4 /*yield*/, effects_1.put(connected_react_router_1.replace('/'))];
+                return [4 /*yield*/, effects_1.call(function () { return navigation_1.default.replace('/'); })];
             case 9:
                 _a.sent();
                 _a.label = 10;

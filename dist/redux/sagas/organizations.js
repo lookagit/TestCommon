@@ -32,7 +32,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.selectOrganization = void 0;
 var effects_1 = require("redux-saga/effects");
-var connected_react_router_1 = require("connected-react-router");
+var navigation_1 = __importDefault(require("../../navigation"));
 var networks_1 = __importDefault(require("../reducers/networks"));
 var organizations_1 = __importDefault(require("../reducers/organizations"));
 function selectOrganization(api, _a) {
@@ -47,7 +47,7 @@ function selectOrganization(api, _a) {
                 return [4 /*yield*/, effects_1.put(networks_1.default.networksRequest())];
             case 2:
                 _b.sent();
-                return [4 /*yield*/, effects_1.put(connected_react_router_1.push('/networks'))];
+                return [4 /*yield*/, effects_1.call(function () { return navigation_1.default.push('/networks'); })];
             case 3:
                 _b.sent();
                 return [2 /*return*/];

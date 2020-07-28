@@ -1,5 +1,4 @@
 import { call, put, select } from 'redux-saga/effects';
-import { push, replace } from 'connected-react-router';
 import moment from 'moment-timezone';
 import { ApiResponse } from 'apisauce';
 import { callApi } from './call-api-saga';
@@ -13,6 +12,7 @@ import { IAuthState } from '../../models/reducers/auth';
 import { IAppState } from '../../models/app';
 import { IOrganizationState } from '../../models/reducers/organizations';
 import { IUserInfoState } from '../../models/reducers/userInfo';
+import NavigationService from '../../navigation';
 
 const AUDIENCE = 'https://smart.server/';
 const SCOPE = 'openid profile offline_access email app:normal';
@@ -94,11 +94,11 @@ export function* login(api: IApi, auth0Api: IAuthApi, { email, password }: Login
         }
 
         if (getOrganizationsSuccess && organizationsData && organizationsData.data && organizationsData.data.length > 1) {
-          yield put(push('/home', { showModal: true }));
+          yield call(() => NavigationService.push('/home', { showModal: true }));
         }
         if (getOrganizationsSuccess && organizationsData && organizationsData.data && organizationsData.data.length === 1) {
           yield put(OrganizationsActions.setOrganizationsSuccess(firstOrgId.org_id));
-          yield put(push('/home'));
+          yield call(() => NavigationService.push('/home'));
         }
       }
     } else {
@@ -156,11 +156,11 @@ export function* loginLoad(api: IApi){
     api.setTimezoneHeader(auth.tzIana);
     api.setAuthTokenForServer(auth.accessToken);
     if (router && router.location && router.location.pathname === '/') {
-      yield put(replace('/home'));
+      yield call(() => NavigationService.replace('/home'));
     }
   }
   if (auth && !auth.accessToken) {
-    yield put(replace('/'));
+    yield call(() => NavigationService.replace('/'));
   }
   yield put(LoginActions.loginLoadSuccess());
 

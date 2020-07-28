@@ -1,5 +1,5 @@
-import { put } from 'redux-saga/effects';
-import { push } from 'connected-react-router';
+import { put, call } from 'redux-saga/effects';
+import NavigationService from '../../navigation';
 import { IApi } from '../../models/api';
 import NetworkActions from '../reducers/networks';
 import OrganizationActions from '../reducers/organizations';
@@ -14,5 +14,5 @@ export function* selectOrganization(api: IApi, { organizationId }: ISelectOrgani
   api.setOrganizationHeader(organizationId);
   yield put(OrganizationActions.setOrganizationsSuccess(organizationId));
   yield put(NetworkActions.networksRequest());
-  yield put(push('/networks'));
+  yield call(() => NavigationService.push('/networks'));
 }
