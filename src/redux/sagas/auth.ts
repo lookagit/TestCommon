@@ -13,6 +13,7 @@ import { IAppState } from '../../models/app';
 import { IOrganizationState } from '../../models/reducers/organizations';
 import { IUserInfoState } from '../../models/reducers/userInfo';
 import NavigationService from '../../navigation';
+import { UserLogsActions } from '../..';
 
 const AUDIENCE = 'https://smart.server/';
 const SCOPE = 'openid profile offline_access email app:normal';
@@ -100,6 +101,7 @@ export function* login(api: IApi, auth0Api: IAuthApi, { email, password }: Login
           yield put(OrganizationsActions.setOrganizationsSuccess(firstOrgId.org_id));
           yield call(() => NavigationService.push('/home'));
         }
+        yield put(UserLogsActions.loadLog({ ...userData, numOfOrganizations: organizationsData.data.length }));
       }
     } else {
       yield put(LoginActions.loginFailure({ error: 'Bad credentials' } || { error: 'Network Error' }));
