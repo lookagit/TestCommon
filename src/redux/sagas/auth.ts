@@ -131,9 +131,12 @@ export function* refresh(api: any, { authRefresh }: any){
 
 // attempts to logout
 export function* logout(api: any){
-  console.log("====logout=====")
-  yield call(() => NavigationService.replace('/'));
+  // move base url in env file
+  api.setOnServer('directory.global.smart.network/directory/dash_user_by_email');
+  api.setAuthTokenForServer('');
+  api.setOrganizationHeader('');
   yield put(LoginActions.logoutSuccess());
+  yield call(() => NavigationService.replace('/'));
 }
 
 // loads the login

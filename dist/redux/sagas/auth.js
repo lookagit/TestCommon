@@ -212,11 +212,14 @@ function logout(api) {
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
-                console.log("====logout=====");
-                return [4 /*yield*/, effects_1.call(function () { return navigation_1.default.replace('/'); })];
+                // move base url in env file
+                api.setOnServer('directory.global.smart.network/directory/dash_user_by_email');
+                api.setAuthTokenForServer('');
+                api.setOrganizationHeader('');
+                return [4 /*yield*/, effects_1.put(auth_1.default.logoutSuccess())];
             case 1:
                 _a.sent();
-                return [4 /*yield*/, effects_1.put(auth_1.default.logoutSuccess())];
+                return [4 /*yield*/, effects_1.call(function () { return navigation_1.default.replace('/'); })];
             case 2:
                 _a.sent();
                 return [2 /*return*/];
