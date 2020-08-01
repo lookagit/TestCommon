@@ -5,6 +5,7 @@ import NetworkActions, { NetworkTypes, reducer as NetworkReducer } from './redux
 import OrganizationActions, { OrganizationsTypes, reducer as OrganizationReducer } from './redux/reducers/organizations';
 import UserInfoActions, { UserInfoTypes, reducer as UserInfoReducer } from './redux/reducers/userInfo';
 import UserSettingsActions, { UserSettingsTypes, reducer as UserSettingsReducer } from './redux/reducers/userSettings';
+import UserLogsActions, { UserLogsTypes, reducer as UserLogsReducer } from './redux/reducers/userLogs';
 import rootSaga from './redux/sagas'
 import NavigationService from './navigation';
 
@@ -28,5 +29,8 @@ export {
   NetworkReducer,
   OrganizationReducer,
   UserInfoReducer,
-  UserSettingsReducer
+  UserSettingsReducer,
+  UserLogsActions,
+  UserLogsTypes,
+  UserLogsReducer
 }
