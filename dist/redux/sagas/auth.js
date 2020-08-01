@@ -211,10 +211,12 @@ exports.refresh = refresh;
 function logout(api) {
     return __generator(this, function (_a) {
         switch (_a.label) {
-            case 0: return [4 /*yield*/, effects_1.put(auth_1.default.logoutSuccess())];
+            case 0:
+                console.log("====logout=====");
+                return [4 /*yield*/, effects_1.call(function () { return navigation_1.default.replace('/'); })];
             case 1:
                 _a.sent();
-                return [4 /*yield*/, effects_1.call(function () { return navigation_1.default.replace('/'); })];
+                return [4 /*yield*/, effects_1.put(auth_1.default.logoutSuccess())];
             case 2:
                 _a.sent();
                 return [2 /*return*/];

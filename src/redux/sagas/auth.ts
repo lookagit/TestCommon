@@ -131,8 +131,9 @@ export function* refresh(api: any, { authRefresh }: any){
 
 // attempts to logout
 export function* logout(api: any){
-  yield put(LoginActions.logoutSuccess());
+  console.log("====logout=====")
   yield call(() => NavigationService.replace('/'));
+  yield put(LoginActions.logoutSuccess());
 }
 
 // loads the login
