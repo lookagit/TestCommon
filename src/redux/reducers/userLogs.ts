@@ -20,12 +20,13 @@ export const INITIAL_STATE: ImmutableObject<IUserLogsState> = Immutable({
 
 export const loadUserLog = (state: ImmutableObject<IUserLogsState>, { data }: SetLogsParamType) => {
   console.log("======data=======", data)
-  let array = state.userLogs.concat(data)
-  console.log("___ARRAY+++", array)
+  let array = Immutable(state.userLogs);
+  let arrayAppened = array.concat(data)
+  console.log("___ARRAY+++", arrayAppened)
   // let helperArray: ImmutableArray<IUserLogsState> = [...state.userLogs, data]
   // state.userLogs.
   return state.merge({
-    userLogs: array,
+    userLogs: arrayAppened,
   });
 };
 
