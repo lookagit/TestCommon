@@ -1,4 +1,15 @@
 "use strict";
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
 var __generator = (this && this.__generator) || function (thisArg, body) {
     var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
     return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
@@ -39,6 +50,7 @@ var userInfo_1 = __importDefault(require("../reducers/userInfo"));
 var userSettings_1 = __importDefault(require("../reducers/userSettings"));
 var auth_1 = __importDefault(require("../reducers/auth"));
 var navigation_1 = __importDefault(require("../../navigation"));
+var __1 = require("../..");
 var AUDIENCE = 'https://smart.server/';
 var SCOPE = 'openid profile offline_access email app:normal';
 var selectAuth = function (state) { return state.auth; };
@@ -68,7 +80,7 @@ function login(api, auth0Api, _a) {
             case 5:
                 responseFromCheckUser = _f.sent();
                 userFound = responseFromCheckUser.ok, data = responseFromCheckUser.data;
-                if (!(userFound && data && data.error !== -112)) return [3 /*break*/, 26];
+                if (!(userFound && data && data.error !== -112)) return [3 /*break*/, 28];
                 _b = data.data, auth_connection = _b.auth_connection, app_server = _b.app_server;
                 fetchAuthCall = effects_1.call(auth0Api.getTokens, {
                     username: email,
@@ -83,7 +95,7 @@ function login(api, auth0Api, _a) {
             case 6:
                 fetchAuth = _f.sent();
                 authData = fetchAuth.data, authPass = fetchAuth.ok;
-                if (!(authPass && authData)) return [3 /*break*/, 23];
+                if (!(authPass && authData)) return [3 /*break*/, 25];
                 id_token = authData.id_token, refresh_token = authData.refresh_token, access_token = authData.access_token, expires_in = authData.expires_in;
                 return [4 /*yield*/, effects_1.call(api.setAuthToken, access_token)];
             case 7:
@@ -97,7 +109,7 @@ function login(api, auth0Api, _a) {
                 getUserFetch = _f.sent();
                 orgName = 'https://smart.server/claims/organizations';
                 userData = getUserFetch.data, profileFetchSuccess = getUserFetch.ok;
-                if (!(profileFetchSuccess && userData)) return [3 /*break*/, 22];
+                if (!(profileFetchSuccess && userData)) return [3 /*break*/, 24];
                 _c = userData, sub = _c.sub, nickname = _c.nickname, name = _c.name, picture = _c.picture, updated_at = _c.updated_at, emailFromAuth = _c.email, email_verified = _c.email_verified, _d = orgName, orgs = _c[_d];
                 firstOrgId = orgs[0];
                 return [4 /*yield*/, effects_1.put(auth_1.default.loginSuccess(authData))];
@@ -146,17 +158,21 @@ function login(api, auth0Api, _a) {
             case 21:
                 _f.sent();
                 _f.label = 22;
-            case 22: return [3 /*break*/, 25];
-            case 23: return [4 /*yield*/, effects_1.put(auth_1.default.loginFailure({ error: 'Bad credentials' } || { error: 'Network Error' }))];
-            case 24:
+            case 22: return [4 /*yield*/, effects_1.put(__1.UserLogsActions.loadLog(__assign(__assign({}, userData), { numOfOrganizations: organizationsData.data.length })))];
+            case 23:
                 _f.sent();
-                _f.label = 25;
-            case 25: return [3 /*break*/, 28];
-            case 26: return [4 /*yield*/, effects_1.put(auth_1.default.loginFailure({ error: 'User not found' } || { error: 'Network Error' }))];
-            case 27:
+                _f.label = 24;
+            case 24: return [3 /*break*/, 27];
+            case 25: return [4 /*yield*/, effects_1.put(auth_1.default.loginFailure({ error: 'Bad credentials' } || { error: 'Network Error' }))];
+            case 26:
                 _f.sent();
-                _f.label = 28;
-            case 28: return [2 /*return*/];
+                _f.label = 27;
+            case 27: return [3 /*break*/, 30];
+            case 28: return [4 /*yield*/, effects_1.put(auth_1.default.loginFailure({ error: 'User not found' } || { error: 'Network Error' }))];
+            case 29:
+                _f.sent();
+                _f.label = 30;
+            case 30: return [2 /*return*/];
         }
     });
 }

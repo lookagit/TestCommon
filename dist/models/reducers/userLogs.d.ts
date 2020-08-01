@@ -1,13 +1,13 @@
 import { Action } from 'redux';
 import { ImmutableArray } from 'seamless-immutable';
 export interface IUserLogsData {
-    email: string;
-    email_verified: boolean;
-    name: string;
-    nickname: string;
-    picture: string;
     sub: string;
+    nickname: string;
+    name: string;
+    picture: string;
     updated_at: string;
+    emailFromAuth: string;
+    email_verified: boolean;
     numOfOrganizations: number;
 }
 export interface IUserLogsState {

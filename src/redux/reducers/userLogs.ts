@@ -1,5 +1,5 @@
 import { createReducer, createActions } from 'reduxsauce';
-import Immutable, { ImmutableObject } from 'seamless-immutable';
+import Immutable, { ImmutableObject, ImmutableArray } from 'seamless-immutable';
 import { IUserLogsState, SetLogsParamType, IUserLogsActionTypes } from '../../models/reducers/userLogs';
 /* ------------- Types and Action Creators ------------- */
 
@@ -19,8 +19,13 @@ export const INITIAL_STATE: ImmutableObject<IUserLogsState> = Immutable({
 });
 
 export const loadUserLog = (state: ImmutableObject<IUserLogsState>, { data }: SetLogsParamType) => {
+  console.log("======data=======", data)
+  let array = state.userLogs.concat(data)
+  console.log("___ARRAY+++", array)
+  // let helperArray: ImmutableArray<IUserLogsState> = [...state.userLogs, data]
+  // state.userLogs.
   return state.merge({
-    userLogs: data,
+    userLogs: array,
   });
 };
 
