@@ -21,15 +21,21 @@ exports.loadUserLog = function (state, _a) {
     var data = _a.data;
     console.log("======data=======", data);
     if (state.userLogs !== null) {
+        // let array = Immutable(state.userLogs);
+        // let arrayAppened = array.concat(data)
+        // console.log("___ARRAY+++", arrayAppened);
+        // return state.merge({
+        //   userLogs: arrayAppened,
+        // });
         var array = seamless_immutable_1.default(state.userLogs);
-        var arrayAppened = array.concat(data);
-        console.log("___ARRAY+++", arrayAppened);
+        var mutableArray = seamless_immutable_1.default.asMutable(array);
+        mutableArray.push(data);
         return state.merge({
-            userLogs: arrayAppened,
+            userLogs: mutableArray,
         });
     }
     return state.merge({
-        userLogs: data,
+        userLogs: [data],
     });
 };
 exports.removeUserLog = function (state) { return state.merge({
