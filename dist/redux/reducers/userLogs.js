@@ -20,13 +20,16 @@ exports.INITIAL_STATE = seamless_immutable_1.default({
 exports.loadUserLog = function (state, _a) {
     var data = _a.data;
     console.log("======data=======", data);
-    var array = seamless_immutable_1.default(state.userLogs);
-    var arrayAppened = array.concat(data);
-    console.log("___ARRAY+++", arrayAppened);
-    // let helperArray: ImmutableArray<IUserLogsState> = [...state.userLogs, data]
-    // state.userLogs.
+    if (state.userLogs !== null) {
+        var array = seamless_immutable_1.default(state.userLogs);
+        var arrayAppened = array.concat(data);
+        console.log("___ARRAY+++", arrayAppened);
+        return state.merge({
+            userLogs: arrayAppened,
+        });
+    }
     return state.merge({
-        userLogs: arrayAppened,
+        userLogs: data,
     });
 };
 exports.removeUserLog = function (state) { return state.merge({
