@@ -214,6 +214,9 @@ function logout(api) {
             case 0: return [4 /*yield*/, effects_1.put(auth_1.default.logoutSuccess())];
             case 1:
                 _a.sent();
+                return [4 /*yield*/, effects_1.call(function () { return navigation_1.default.replace('/'); })];
+            case 2:
+                _a.sent();
                 return [2 /*return*/];
         }
     });
